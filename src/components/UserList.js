@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 
 class UserList extends Component{
-  render: function() {
+  render () {
     let _this = this;
     
     return (
@@ -16,7 +16,7 @@ class UserList extends Component{
             );
         })}
       </ul>
-      );
+    );
   }
 
 }

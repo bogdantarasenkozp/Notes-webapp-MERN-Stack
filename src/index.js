@@ -12,14 +12,10 @@ import reducer from './reducers/reducer';
 
 import './index.css';
 
-
 var store = createStore(reducer);
 
-store.dispatch({
-  type: 'ADD_USER',
-  user: {name: 'Dan'}
-});
-
+console.log('store');
+console.log(store);
 console.log(store.getState());
 
 ReactDOM.render((
