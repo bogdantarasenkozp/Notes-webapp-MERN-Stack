@@ -6,7 +6,7 @@ import store from '../store/index';
 class UserListContainer extends Component{
 	
 	render () {
-		return <UserList users={this.props.users} toggleActive={this.props.toggleActive}/>
+		return <UserList users={this.props.users} />
 	}
 }
 
