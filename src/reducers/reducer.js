@@ -1,10 +1,10 @@
-import { createStore, combineReducers } from 'redux';
+import { combineReducers } from 'redux';
 
 import userReducer from './user';
 import widgetReducer from './widget';
 
 const reducers = combineReducers({
-	userSate:userReducer,
+	userState:userReducer,
 	widgetState: widgetReducer
 });
 

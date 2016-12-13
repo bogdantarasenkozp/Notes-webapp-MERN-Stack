@@ -6,12 +6,10 @@ class UserList extends Component{
     
     return (
       <ul className="user-list">
-        {this.props.users.map(function(user) {         
+        {this.props.users.map((user) => {         
           return (
             <li key={user.id}>
-              <a href="#">{user.name}</a>
-              <span>{user.active ? 'Active' : 'Not Active'}</span>
-              <button onClick={_this.props.toggleActive.bind(null, user.id)}>Toggle Active</button>
+              <a href="#" onClick={this.props.toggleActive}>{user.name}</a>
             </li>
             );
         })}

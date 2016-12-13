@@ -1,30 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Router, Route, browserHistory, IndexRoute } from 'react-router';
-import { createStore } from 'redux'
+import { Provider } from 'react-redux';
 
-import MainLayout from './components/MainLayout';
-import SearchLayout from './components/SearchLayout';
-import UserListContainer from './containers/UserListContainer';
-import HomeComponent from './components/HomeComponent';
+import store from './store/index';
+import router from './router';
 
-import reducer from './reducers/reducer';
-
-import './index.css';
-
-var store = createStore(reducer);
-
-console.log('store');
-console.log(store);
-console.log(store.getState());
-
-ReactDOM.render((
-  <Router history={browserHistory}>
-    <Route path="/" component={MainLayout}>
-      <IndexRoute component={HomeComponent} />
-      <Route component={SearchLayout}>
-        <Route path="users" component={UserListContainer} />
-      </Route> 
-    </Route>
-  </Router>
-), document.getElementById('root'));
+ReactDOM.render(
+	<Provider store={store}>{router}</Provider>,
+	document.getElementById('root')
+);
