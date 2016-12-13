@@ -1,15 +1,18 @@
 const initialUserState = {
 	users: [
-        {id:1, name:'Ryan', active:true},
-        {id:2, name:'Michael', active:true},
-        {id:3, name:'Dan', active:true}
+        {id:1, name:'Ryan' },
+        {id:2, name:'Michael' },
+        {id:3, name:'Dan' }
     ]
 }
 
 const userReducer = function(state = initialUserState,action){
 	switch(action.type){
 		case 'USER_LIST_SUCCESS':
-			return {...state,...{ users:action.users }}
+			return {...state,...{ users:action.users }};
+		case 'ADD_USER':
+			return [...state.users,...[action.user]];
+
 	}
 	return state;
 }
