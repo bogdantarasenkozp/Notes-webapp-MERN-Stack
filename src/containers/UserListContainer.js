@@ -12,7 +12,6 @@ var _ = require('lodash');
 class UserListContainer extends Component{
 	
 	handleSubmit (user) {
-		console.log(store);
 		let users = store.getState();
 		let lastIndex = _.last(users.userState.users).id;
 		let currentIndex = ++lastIndex;
@@ -20,9 +19,9 @@ class UserListContainer extends Component{
 		user.id = currentIndex;
 
 		store.dispatch(addUser(user));
-
-		console.log(store.getState());
 	}
+
+
 
 	render () {
 		return (
@@ -39,6 +38,5 @@ const mapStateToProps = function(store){
 		users:store.userState.users
 	}
 }
-
 
 export default connect(mapStateToProps)(UserListContainer);

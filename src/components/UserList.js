@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 
 class UserList extends Component{
   render () {
-     let _this = this;
+    let _this = this;
     
     return (
       <ul className="user-list">

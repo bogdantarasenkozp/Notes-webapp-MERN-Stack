@@ -11,7 +11,7 @@ const userReducer = function(state = initialUserState,action){
 		case 'USER_LIST_SUCCESS':
 			return {...state,...{ users:action.users }};
 		case 'ADD_USER':
-			return [...state.users,...[action.user]];
+			return {users:[...state.users,...[action.user]]};
 
 	}
 	return state;
