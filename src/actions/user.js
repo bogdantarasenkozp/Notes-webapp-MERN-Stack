@@ -5,4 +5,11 @@ function addUser(data){
 	}
 }
 
-export default addUser;
+function removeUser(data){
+	return {
+		type:'REMOVE_USER',
+		users:data
+	}
+}
+
+export {addUser,removeUser};

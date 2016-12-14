@@ -1,3 +1,5 @@
+var _ = require('lodash');
+
 const initialUserState = {
 	users: [
         {id:1, name:'Ryan' },
@@ -12,6 +14,8 @@ const userReducer = function(state = initialUserState,action){
 			return {...state,...{ users:action.users }};
 		case 'ADD_USER':
 			return {users:[...state.users,...[action.user]]};
+		case 'REMOVE_USER':
+			return {users:_.intersection(state.users,action.users)}//[...state.users,...action.users]};
 
 	}
 	return state;
