@@ -34,16 +34,23 @@ class UserListContainer extends Component{
 		let res = _.remove(users, function(user) {
 		  return user.id === id;
 		});
-		console.log('result');
 		
 		store.dispatch(removeUser(users));
+	}
+
+	updateItem(user) {
+		console.log(user.id)
+		//task:find and change element of arr
+		// let users = store.getState().userState.users;
+		// let res = _.chain(users).find({id:user.id});
+		// console.log(res)
 	}
 
 	render () {
 		return (
 			<div>
 				<Input onSubmit={this.handleSubmit} />
-				<UserList users={this.props.users} deleteItem={this.deleteItem}/>
+				<UserList users={this.props.users} deleteItem={this.deleteItem} updateItem={this.updateItem}/>
 			</div>
 		)
 	}
