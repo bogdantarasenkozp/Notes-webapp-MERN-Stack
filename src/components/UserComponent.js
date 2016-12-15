@@ -11,6 +11,7 @@ class UserComponent extends Component{
     };
 
     this.toggleChangeInput=this.toggleChangeInput.bind(this);
+    this.changeInputClick=this.changeInputClick.bind(this);
   }
 
   toggleChangeInput () {
@@ -30,13 +31,13 @@ class UserComponent extends Component{
   		name:name
   	}
   	this.props.updateItem(user)
+  	this.toggleChangeInput()
 
   }
 
   render () {
 
   	const { deleteItem,user } = this.props;
-    
     let changeInput = null;
     let changeInputStatus = null;
 

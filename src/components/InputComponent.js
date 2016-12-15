@@ -1,23 +1,29 @@
-import React, { Component } from 'react';
-import { Field,reduxForm } from 'redux-form';
+import React, {Component} from 'react';
+import ReactDOM from 'react-dom';
 
 class Input extends Component{
+
+	addUser (event) {
+		event.preventDefault();
+		let user = {};
+
+		const { addItem } = this.props;
+		user.name = ReactDOM.findDOMNode(this.refs.username).value;
+
+		addItem(user);
+		ReactDOM.findDOMNode(this.refs.username).value = '';
+	}
+
 	render(){
-		const { handleSubmit } = this.props;
 		return (
-			<form onSubmit={handleSubmit}>
+			<form onSubmit={this.addUser.bind(this)}>
 				<div>
-					<label htmlFor="name">Name</label>
-					<Field name="name" component="input" type="text" />
+					<input type="text" placeholder='Enter your name' ref='username' />
 				</div>
-				<button type="submit">Submit</button>
+				<button type="submit">Add user</button>
 			</form>
 		);
 	}
 }
-
-Input = reduxForm({
-	form: 'name'
-})(Input);
 
 export default Input;

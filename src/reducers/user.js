@@ -15,7 +15,12 @@ const userReducer = function(state = initialUserState,action){
 		case 'ADD_USER':
 			return {users:[...state.users,...[action.user]]};
 		case 'REMOVE_USER':
-			return {users:_.intersection(state.users,action.users)}//[...state.users,...action.users]};
+			return {users:_.intersection(state.users,action.users)};
+		case 'UPDATE_USER':
+			//return {users:action.users};
+			return {...state,...{ users:action.users }};
+			console.log(state)
+			break;
 
 	}
 	return state;

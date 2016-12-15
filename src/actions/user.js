@@ -12,4 +12,11 @@ function removeUser(data){
 	}
 }
 
-export {addUser,removeUser};
+function updateUser(data){
+	return {
+		type:'UPDATE_USER',
+		users:data
+	}
+}
+
+export {addUser,removeUser,updateUser};

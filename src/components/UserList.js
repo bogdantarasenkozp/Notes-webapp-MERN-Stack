@@ -10,7 +10,11 @@ class UserList extends Component{
       <ul className="user-list"> 
         {
           this.props.users.map((user) => {  
-            return <UserComponent user={user} deleteItem={this.props.deleteItem} updateItem={this.props.updateItem}/>  
+            return (
+              <div key={user.id}>
+                <UserComponent user={user} deleteItem={this.props.deleteItem} updateItem={this.props.updateItem}/> 
+              </div>
+            )  
           })
         }
       </ul>

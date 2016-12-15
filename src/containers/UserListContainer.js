@@ -4,8 +4,7 @@ import { connect } from 'react-redux';
 import UserList from '../components/UserList';
 import Input from '../components/InputComponent';
 
-import { addUser,removeUser } from '../actions/user';
-// import  from '../actions/user';
+import { addUser,removeUser,updateUser } from '../actions/user';
 
 import store from '../store/index';
 
@@ -13,7 +12,7 @@ var _ = require('lodash');
 
 class UserListContainer extends Component{
 	
-	handleSubmit (user) {
+	addItem (user) {
 		let users = store.getState();
 		
 		if(users.userState.users.length > 0){
@@ -39,17 +38,17 @@ class UserListContainer extends Component{
 	}
 
 	updateItem(user) {
-		console.log(user.id)
-		//task:find and change element of arr
-		// let users = store.getState().userState.users;
-		// let res = _.chain(users).find({id:user.id});
-		// console.log(res)
+		let users = store.getState().userState.users;
+		let itemIndex = _.findIndex(users,{id:user.id});
+		users[itemIndex].name = user.name;
+		
+		store.dispatch(updateUser(users))
 	}
 
 	render () {
 		return (
 			<div>
-				<Input onSubmit={this.handleSubmit} />
+				<Input addItem={this.addItem} />
 				<UserList users={this.props.users} deleteItem={this.deleteItem} updateItem={this.updateItem}/>
 			</div>
 		)
