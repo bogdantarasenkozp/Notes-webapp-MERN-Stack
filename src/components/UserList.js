@@ -5,7 +5,6 @@ class UserList extends Component{
 
   render () {
     let _this = this;
-
     return (
       <ul className="user-list"> 
         {

@@ -19,4 +19,11 @@ function updateUser(data){
 	}
 }
 
-export {addUser,removeUser,updateUser};
+function searchUser(data){
+	return {
+		type:'SEARCH_USER',
+		payload:data
+	}
+}
+
+export {addUser,removeUser,updateUser,searchUser};

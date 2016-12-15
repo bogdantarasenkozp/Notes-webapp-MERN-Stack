@@ -3,8 +3,9 @@ import { connect } from 'react-redux';
 
 import UserList from '../components/UserList';
 import Input from '../components/InputComponent';
+import SearchComponent from '../components/SearchComponent'
 
-import { addUser,removeUser,updateUser } from '../actions/user';
+import { addUser,removeUser,updateUser,searchUser } from '../actions/user';
 
 import store from '../store/index';
 
@@ -45,9 +46,24 @@ class UserListContainer extends Component{
 		store.dispatch(updateUser(users))
 	}
 
+	searchItem (value) {
+		 let users = store.getState().userState.users;
+
+		 // let results = users.filter(user => {
+		 // 	return user.name.toLowerCase().includes(value);
+		 // });
+		 // console.log(results)
+		 let data = {};
+		 data.users = users;
+		 data.value = value;
+
+		 store.dispatch(searchUser(data));
+	}
+
 	render () {
 		return (
 			<div>
+				<SearchComponent searchItem={this.searchItem}/>
 				<Input addItem={this.addItem} />
 				<UserList users={this.props.users} deleteItem={this.deleteItem} updateItem={this.updateItem}/>
 			</div>
