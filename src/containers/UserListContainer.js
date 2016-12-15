@@ -23,7 +23,6 @@ class UserListContainer extends Component{
 		}
 		
 		let currentIndex = ++lastIndex;
-
 		user.id = currentIndex;
 
 		store.dispatch(addUser(user));
@@ -48,12 +47,8 @@ class UserListContainer extends Component{
 
 	searchItem (value) {
 		 let users = store.getState().userState.users;
-
-		 // let results = users.filter(user => {
-		 // 	return user.name.toLowerCase().includes(value);
-		 // });
-		 // console.log(results)
 		 let data = {};
+
 		 data.users = users;
 		 data.value = value;
 
