@@ -12,3 +12,6 @@
   <li><a target="_blank" href="https://github.com/reactjs/redux">Redux</a></li>
   <li><a target="_blank" href="https://github.com/reactstrap/reactstrap">ReactStrap</a></li>
 </ul>
+<h2>Result:</h2>
+<img src="screen1.png"/>
+<img src="screen2.png"/>
