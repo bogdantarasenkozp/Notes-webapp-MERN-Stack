@@ -1,12 +1,13 @@
 import React, {Component} from 'react';
 import UserComponent from '../components/UserComponent'; 
+import { Container, Row, Col, Table } from 'reactstrap';
 
 class UserList extends Component{
 
   render () {
     let _this = this;
     return (
-      <ul className="user-list"> 
+      <div>
         {
           this.props.users.map((user) => {  
             return (
@@ -16,7 +17,7 @@ class UserList extends Component{
             )  
           })
         }
-      </ul>
+      </div>
     );
 
   }

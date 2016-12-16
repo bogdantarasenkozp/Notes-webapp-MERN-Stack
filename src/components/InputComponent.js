@@ -1,7 +1,9 @@
 import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
+import { Button, Input } from 'reactstrap';
+import { Container, Row, Col } from 'reactstrap';
 
-class Input extends Component{
+class InputComponent extends Component{
 
 	addUser (event) {
 		event.preventDefault();
@@ -16,14 +18,16 @@ class Input extends Component{
 
 	render(){
 		return (
-			<form onSubmit={this.addUser.bind(this)}>
-				<div>
-					<input type="text" placeholder='Enter your name' ref='username' />
-				</div>
-				<button type="submit">Add user</button>
-			</form>
+			<div>
+				<Col xs="8" className="clear-padding">
+					<Input type="text" placeholder='Enter your name' ref='username' />
+				</Col>
+				<Col xs="2">
+					<Button outline color="success" onClick={this.addUser.bind(this)}>add user</Button>{' '}
+				</Col>
+			</div>
 		);
 	}
 }
 
-export default Input;
+export default InputComponent;

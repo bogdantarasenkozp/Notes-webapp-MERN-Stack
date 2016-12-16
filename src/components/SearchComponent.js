@@ -1,4 +1,5 @@
 import React,{ Component } from 'react'
+import { Input } from 'reactstrap'
 
 class SearchComponent extends Component{
 	render () {
@@ -6,24 +7,12 @@ class SearchComponent extends Component{
 		const dataSearch = (e) => {
 			let value = e.target.value.toLowerCase();
 			const { searchItem } = this.props;
-			// const filter = data.filter(user => {
-			//   return user.name.toLowerCase().includes(value);
-			// });
-			// update({
-			//   data: filter,
-			//   active: 0,
-			//   term: value
-			// });
 			searchItem(value);
 		};
 
 		return (
 			<div>
-		      <input
-		        type="text"
-		        placeholder="Search people by name..."
-		        onChange={dataSearch}
-		      />
+		      <Input type="text" placeholder="Filter people by name..." onChange={dataSearch} />
 			</div>
 		);
 	}

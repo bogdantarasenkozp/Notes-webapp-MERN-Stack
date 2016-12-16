@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
-
+import { Button, ButtonGroup, Input, Table, Container, Row, Col } from 'reactstrap';
 class UserComponent extends Component{
 
   constructor(props,context){
@@ -43,26 +43,28 @@ class UserComponent extends Component{
 
     if(this.state.changeInputShow){
       changeInput = (
-      	<div>
-	      	<input type='text' ref='changeName'/>
-	      	<button onClick={this.changeInputClick.bind(this)} >change</button>
-      	</div>
+        <div>
+        	<Col xs="10">
+  	      	<Input type='text' ref='changeName'/>
+          </Col>
+          <Col xs="2">
+  	      	<Button outline color="primary" onClick={this.changeInputClick.bind(this)}>change</Button>
+        	</Col>
+        </div>
       )
-      changeInputStatus = '(hide)'
+      changeInputStatus = 'hide'
     }else{
       changeInput = ''
-      changeInputStatus = '(update)'
+      changeInputStatus = 'update'
     }
 
   	return (
-        <li key={user.id}>
-          <a href="#">{user.name}</a>
-          <a href="#" onClick={this.props.deleteItem.bind(null,user.id)}>(delete)</a>
-          <a href="#" onClick={this.toggleChangeInput}>
-            {changeInputStatus}
-          </a>
-          {changeInput}
-        </li>
+      <Row className="small-top-offset">
+        <Col xs="3">{user.name}</Col>
+        <Col xs="2"><Button outline color="danger" onClick={this.props.deleteItem.bind(null,user.id)}>delete</Button></Col>
+        <Col xs="2"><Button outline color="warning" onClick={this.toggleChangeInput}>{changeInputStatus}</Button></Col>
+        <Col xs="4">{changeInput}</Col>
+      </Row>
     )
 
   }
