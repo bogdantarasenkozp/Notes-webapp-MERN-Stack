@@ -1,19 +1,28 @@
 import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
-import { Button, Input } from 'reactstrap';
-import { Container, Row, Col } from 'reactstrap';
+import { Button, Input, Col } from 'reactstrap';
 
 class InputComponent extends Component{
 
 	addUser (event) {
 		event.preventDefault();
 		let user = {};
-
 		const { addItem } = this.props;
-		user.name = ReactDOM.findDOMNode(this.refs.username).value;
+		let input = ReactDOM.findDOMNode(this.refs.username);
+		let regex = /^[a-zA-Zא-תа-я ]+$/i;
 
-		addItem(user);
-		ReactDOM.findDOMNode(this.refs.username).value = '';
+		if(input.value === ''){
+			input.placeholder = 'Empty!Please enter the name'
+		}else if(input.value.match(regex) == null){
+			input.value = '';
+			input.placeholder = 'Validation!There are no numbers in the name'
+		}else{
+			user.name = input.value;
+			input.value = '';
+			input.placeholder = 'Enter your name'
+			addItem(user);
+		}
+		
 	}
 
 	render(){

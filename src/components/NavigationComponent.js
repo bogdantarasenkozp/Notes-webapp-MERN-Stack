@@ -1,8 +1,6 @@
 import React, {Component} from 'react';
-import { Navbar, NavbarBrand, Nav, NavItem, NavLink } from 'reactstrap';
+import { Navbar, Nav, NavItem, NavLink } from 'reactstrap';
 import { Link } from 'react-router';
-
-// import logo from '../logo.svg';
 
 class Navigation extends Component{
   render() {
@@ -12,7 +10,7 @@ class Navigation extends Component{
           <Nav className="" navbar>
           	<NavItem>
               <Link to="/">
-          		  <img src='./logo.svg' width="35" height="35" />
+          		  <img src='./logo.svg' width="35" height="35" alt="reactlogo"/>
               </Link>
           	</NavItem>
             <NavItem>

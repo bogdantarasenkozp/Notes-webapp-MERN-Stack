@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
 import { Container, Row, Col } from 'reactstrap';
+const _ = require('lodash');
 
 import UserList from '../components/UserList';
 import InputComponent from '../components/InputComponent';
@@ -10,16 +11,15 @@ import { addUser,removeUser,updateUser,searchUser } from '../actions/user';
 
 import store from '../store/index';
 
-var _ = require('lodash');
-
 class UserListContainer extends Component{
 	
 	addItem (user) {
 		let users = store.getState();
+		let lastIndex = null;
 		if(users.userState.users.length > 0){
-			var lastIndex = _.last(users.userState.users).id;
+			lastIndex = _.last(users.userState.users).id;
 		}else{
-			var lastIndex = 1;
+			lastIndex = 1;
 		}
 		user.id = ++lastIndex;
 		store.dispatch(addUser(user));

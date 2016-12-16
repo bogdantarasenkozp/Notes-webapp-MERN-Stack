@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
-import UserComponent from '../components/UserComponent'; 
-import { Container, Row, Col, Table } from 'reactstrap';
+import UserComponent from '../components/UserComponent';
 
 class UserList extends Component{
 

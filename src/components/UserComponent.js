@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
-import { Button, ButtonGroup, Input, Table, Container, Row, Col } from 'reactstrap';
+import { Button, Input, Row, Col } from 'reactstrap';
 class UserComponent extends Component{
 
   constructor(props,context){
@@ -15,7 +15,7 @@ class UserComponent extends Component{
   }
 
   toggleChangeInput () {
-  	if(this.state.changeInputShow == true){
+  	if(this.state.changeInputShow === true){
   		this.setState({changeInputShow:false});
   	}else{
   		this.setState({changeInputShow:true});
@@ -24,15 +24,27 @@ class UserComponent extends Component{
 
   changeInputClick (event) {
   	event.preventDefault();
-  	let name = ReactDOM.findDOMNode(this.refs.changeName).value;
-  	let userId = this.props.user.id;
-  	let user = {
-  		id:userId,
-  		name:name
-  	}
-  	this.props.updateItem(user)
-  	this.toggleChangeInput()
 
+    let input = ReactDOM.findDOMNode(this.refs.changeName);
+    let regex = /^[a-zA-Zא-תа-я ]+$/i;
+    let name = input.value;
+    const {user,updateItem } = this.props;
+    const userdata = {
+      id:user.id,
+      name:name
+    }
+
+    if(input.value === ''){
+      input.placeholder = 'Empty!Please write the name'
+    }else if(input.value.match(regex) == null){
+      input.value = '';
+      input.placeholder = 'Validation err!Write only letters'
+    }else{
+      updateItem(userdata)
+      this.toggleChangeInput()
+      input.value = '';
+      input.placeholder = 'Enter your name'
+    }
   }
 
   render () {
@@ -61,7 +73,7 @@ class UserComponent extends Component{
   	return (
       <Row className="small-top-offset">
         <Col xs="3">{user.name}</Col>
-        <Col xs="2"><Button outline color="danger" onClick={this.props.deleteItem.bind(null,user.id)}>delete</Button></Col>
+        <Col xs="2"><Button outline color="danger" onClick={deleteItem.bind(null,user.id)}>delete</Button></Col>
         <Col xs="2"><Button outline color="warning" onClick={this.toggleChangeInput}>{changeInputStatus}</Button></Col>
         <Col xs="4">{changeInput}</Col>
       </Row>

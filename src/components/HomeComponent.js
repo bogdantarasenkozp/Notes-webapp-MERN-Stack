@@ -17,16 +17,16 @@ class HomeComponent extends Component{
 			        </Row>
 			        <Row>
 			        	<Col xs="3">
-			        		<img src="./reactlogo.png" width="70" height="70" />
+			        		<img src="./reactlogo.png" width="70" height="70" alt="reactlogo" />
 			        	</Col>
 			        	<Col xs="3">
-			        		<img src="./reduxlogo.png" width="70" height="70" />
+			        		<img src="./reduxlogo.png" width="70" height="70" alt="reduxlogo" />
 			        	</Col>
 			        	<Col xs="3">
-			        		<img src="./routerlogo.png" width="120" height="70" />
+			        		<img src="./routerlogo.png" width="120" height="70" alt="reactrouterlogo" />
 			        	</Col>
 			          	<Col xs="3">
-			        		<img src="./reactstraplogo.png" width="70" height="70" />
+			        		<img src="./reactstraplogo.png" width="70" height="70" alt="reactstraplogo" />
 			        	</Col>
 			        </Row>
 		        </Container>

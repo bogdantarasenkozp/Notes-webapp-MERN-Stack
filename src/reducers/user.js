@@ -14,15 +14,13 @@ const userReducer = function(state = initialUserState,action){
 			return {...state,...{ users:action.users }};
 		case 'ADD_USER':
 			return {users:[...state.users,...[action.user]]};
-			break;
 		case 'REMOVE_USER':
 			return {users:_.intersection(state.users,action.users)};
-			break;
 		case 'UPDATE_USER':
 			return {...state,...{ users:action.users }};
 		case 'SEARCH_USER':
 			let res = null;
-			if(action.payload.value != '')
+			if(action.payload.value !== '')
 				res = action.payload.users.filter(user => {return user.name.toLowerCase().includes(action.payload.value)});
 			else
 				res = initialUserState.users;
