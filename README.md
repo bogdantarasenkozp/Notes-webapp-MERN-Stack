@@ -3,6 +3,7 @@
   <li>CRUD operations (add user,view user,update user,delete user)</li>
   <li>filter or search user in state</li>
   <li>routing</li>
+  <li>input validation (not empty,only letters not numbers in name)</li>
 </ul>
 <p>I use Create React app cli and built app on top of it, also i use ES6 syntax</p>
 <p>I used such libs:</p>
