@@ -8,7 +8,8 @@ class NotesList extends Component{
     return (
       <div>
         {
-          this.props.notes.map((note) => {  
+          this.props.notes.map((note) => {
+            console.log(note)
             return (
               <div key={note.id}>
                 <NoteComponent note={note} deleteNote={this.props.deleteNote} updateNote={this.props.updateNote}/> 

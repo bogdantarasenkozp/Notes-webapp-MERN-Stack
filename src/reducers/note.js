@@ -2,9 +2,9 @@ var _ = require('lodash');
 
 const initialNoteState = {
 	notes: [
-        {id:1, note:'Ryan' },
-        {id:2, note:'Michael' },
-        {id:3, note:'Dan' }
+        {id:1, text:'Ryan' },
+        {id:2, text:'Michael' },
+        {id:3, text:'Dan' }
     ]
 }
 

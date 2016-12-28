@@ -62,7 +62,7 @@ class NoteListContainer extends Component{
 				
 				<Row>
 					<Col xs="12">
-						<NotesList notes={this.props.notes} deleteItem={this.deleteNote} updateItem={this.updateNote}/>
+						<NotesList notes={this.props.notes} deleteNote={this.deleteNote} updateItem={this.updateNote}/>
 					</Col>
 				</Row>
 			</Container>

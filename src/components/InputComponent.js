@@ -24,6 +24,7 @@ class InputComponent extends Component{
 			input.placeholder = 'Enter your note'
 			addNote(note);
 		}
+		console.log(note)
 		
 	}
 
