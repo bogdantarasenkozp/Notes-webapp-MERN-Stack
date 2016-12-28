@@ -1,13 +1,9 @@
 import { combineReducers } from 'redux';
-import { reducer as formReducer } from 'redux-form';
 
-import userReducer from './user';
-import widgetReducer from './widget';
+import noteReducer from './note';
 
 const reducers = combineReducers({
-	userState:userReducer,
-	widgetState: widgetReducer,
-	form:formReducer
+	noteState:noteReducer,
 });
 
 export default reducers;

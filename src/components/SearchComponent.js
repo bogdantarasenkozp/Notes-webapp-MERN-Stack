@@ -6,13 +6,13 @@ class SearchComponent extends Component{
 
 		const dataSearch = (e) => {
 			let value = e.target.value.toLowerCase();
-			const { searchItem } = this.props;
-			searchItem(value);
+			const { searchNote } = this.props;
+			searchNote(value);
 		};
 
 		return (
 			<div>
-		      <Input type="text" placeholder="Filter people by name..." onChange={dataSearch} />
+		      <Input type="text" placeholder="Filter notes..." onChange={dataSearch} />
 			</div>
 		);
 	}

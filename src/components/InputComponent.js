@@ -4,23 +4,25 @@ import { Button, Input, Col } from 'reactstrap';
 
 class InputComponent extends Component{
 
-	addUser (event) {
+	addNote (event) {
+
 		event.preventDefault();
-		let user = {};
-		const { addItem } = this.props;
-		let input = ReactDOM.findDOMNode(this.refs.username);
+		
+		let note = {};
+		const { addNote } = this.props;
+		let input = ReactDOM.findDOMNode(this.refs.input_note);
 		let regex = /^[a-zA-Zא-תа-я ]+$/i;
 
 		if(input.value === ''){
-			input.placeholder = 'Empty!Please enter the name'
+			input.placeholder = 'Empty!Please enter the note'
 		}else if(input.value.match(regex) == null){
 			input.value = '';
-			input.placeholder = 'Validation!There are no numbers in the name'
+			input.placeholder = 'Validation!There are no numbers in the note'
 		}else{
-			user.name = input.value;
+			note.text = input.value;
 			input.value = '';
-			input.placeholder = 'Enter your name'
-			addItem(user);
+			input.placeholder = 'Enter your note'
+			addNote(note);
 		}
 		
 	}
@@ -29,10 +31,10 @@ class InputComponent extends Component{
 		return (
 			<div>
 				<Col xs="8" className="clear-padding">
-					<Input type="text" placeholder='Enter your name' ref='username' />
+					<Input type="text" placeholder='Enter your note' ref='input_note' />
 				</Col>
 				<Col xs="2">
-					<Button outline color="success" onClick={this.addUser.bind(this)}>add user</Button>{' '}
+					<Button outline color="success" onClick={this.addNote.bind(this)}>add note</Button>{' '}
 				</Col>
 			</div>
 		);

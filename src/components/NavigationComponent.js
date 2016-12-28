@@ -20,7 +20,7 @@ class Navigation extends Component{
             </NavItem>
             <NavItem>
               <NavLink>
-              	<Link to="/users" activeClassName="active">Users</Link>
+              	<Link to="/notes" activeClassName="active">Users</Link>
               </NavLink>
             </NavItem>
           </Nav>

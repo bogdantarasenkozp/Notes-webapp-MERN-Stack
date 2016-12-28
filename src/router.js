@@ -3,7 +3,7 @@ import { Router, Route, browserHistory, IndexRoute } from 'react-router';
 
 import MainLayout from './components/MainLayout';
 import SearchLayout from './components/SearchLayout';
-import UserListContainer from './containers/UserListContainer';
+import NoteListContainer from './containers/NoteListContainer';
 import HomeComponent from './components/HomeComponent';
 
 export default (
@@ -11,7 +11,7 @@ export default (
 	  <Route path="/" component={MainLayout}>
 	    <IndexRoute component={HomeComponent} />
 	    <Route component={SearchLayout}>
-	      <Route path="users" component={UserListContainer} />
+	      <Route path="notes" component={NoteListContainer} />
 	    </Route> 
 	  </Route>
 	</Router>
