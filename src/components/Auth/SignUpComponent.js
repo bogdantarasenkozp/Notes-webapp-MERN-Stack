@@ -16,7 +16,7 @@ class SignUpComponent extends Component{
 	          <Input type="password" name="password" id="examplePassword" placeholder="don't tell!" />
 	        </FormGroup>
 	        {' '}
-	        <Button>Submit</Button>
+	        <Button>Sign up</Button>
 	      </Form>
 	    );
 	}

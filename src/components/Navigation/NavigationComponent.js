@@ -25,7 +25,7 @@ class Navigation extends Component{
             </NavItem>
             <NavItem>
               <NavLink>
-                <Link to="/auth">auth</Link>
+                <Link to="/auth">Auth</Link>
               </NavLink>
             </NavItem>
           </Nav>
