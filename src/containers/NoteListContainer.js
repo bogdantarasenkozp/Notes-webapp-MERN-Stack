@@ -3,8 +3,8 @@ import { connect } from 'react-redux';
 import { Container, Row, Col } from 'reactstrap';
 const _ = require('lodash');
 
-import NotesList from '../components/NotesList';
-import InputComponent from '../components/InputComponent';
+import NotesList from '../components/Notes/NotesList';
+import InputComponent from '../components/Input/InputComponent';
 
 import { addNote,removeNote,updateNote } from '../actions/note';
 

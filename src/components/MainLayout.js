@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Navigation from '../components/NavigationComponent';
+import Navigation from '../components/Navigation/NavigationComponent';
 
 class MainLayout extends Component{
 	render () {

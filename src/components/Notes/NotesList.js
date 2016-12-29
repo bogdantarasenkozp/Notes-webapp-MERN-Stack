@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import NoteComponent from '../components/NoteComponent';
+import NoteComponent from './NoteComponent';
 
 class NotesList extends Component{
 
@@ -9,7 +9,6 @@ class NotesList extends Component{
       <div>
         { 
           this.props.notes.map((note) => {
-            console.log(note)
             return (
               <div key={note.id}>
                 <NoteComponent note={note} deleteNote={this.props.deleteNote} updateNote={this.props.updateNote}/> 

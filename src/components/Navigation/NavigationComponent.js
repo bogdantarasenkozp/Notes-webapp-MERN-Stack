@@ -23,6 +23,11 @@ class Navigation extends Component{
               	<Link to="/notes" activeClassName="active">Users</Link>
               </NavLink>
             </NavItem>
+            <NavItem>
+              <NavLink>
+                <Link to="/auth">auth</Link>
+              </NavLink>
+            </NavItem>
           </Nav>
         </Navbar>
       </div>

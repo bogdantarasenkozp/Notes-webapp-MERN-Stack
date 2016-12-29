@@ -19,4 +19,4 @@ function updateNote(data){
 	}
 }
 
-export {addNote,removeNote,updateNote};
+export { addNote,removeNote,updateNote };
