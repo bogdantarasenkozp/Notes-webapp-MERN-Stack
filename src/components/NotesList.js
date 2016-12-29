@@ -7,7 +7,7 @@ class NotesList extends Component{
     let _this = this;
     return (
       <div>
-        {
+        { 
           this.props.notes.map((note) => {
             console.log(note)
             return (

@@ -1,29 +1,22 @@
 function addNote(data){
 	return {
 		type:'ADD_NOTE',
-		user:data
+		payload:data
 	}
 }
 
 function removeNote(data){
 	return {
 		type:'REMOVE_NOTE',
-		users:data
+		payload:data
 	}
 }
 
 function updateNote(data){
 	return {
 		type:'UPDATE_NOTE',
-		users:data
-	}
-}
-
-function searchNote(data){
-	return {
-		type:'SEARCH_NOTE',
 		payload:data
 	}
 }
 
-export {addNote,removeNote,updateNote,searchNote};
+export {addNote,removeNote,updateNote};

@@ -5,9 +5,8 @@ const _ = require('lodash');
 
 import NotesList from '../components/NotesList';
 import InputComponent from '../components/InputComponent';
-import SearchComponent from '../components/SearchComponent'
 
-import { addNote,removeNote,updateNote,searchNote } from '../actions/note';
+import { addNote,removeNote,updateNote } from '../actions/note';
 
 import store from '../store/index';
 
@@ -40,14 +39,6 @@ class NoteListContainer extends Component{
 		store.dispatch(updateNote(notes))
 	}
 
-	searchNote (value) {
-		 let notes = store.getState().noteState.notes;
-		 let data = {};
-		 data.notes = notes;
-		 data.value = value;
-		 store.dispatch(searchNote(data));
-	}
-
 	render () {
 		return (
 			<Container>
@@ -55,14 +46,11 @@ class NoteListContainer extends Component{
 					<Col xs="6">
 						<InputComponent addNote={this.addNote} />
 					</Col>
-					<Col xs="6">
-						<SearchComponent searchNote={this.searchNote}/>
-					</Col>
 				</Row>
 				
 				<Row>
 					<Col xs="12">
-						<NotesList notes={this.props.notes} deleteNote={this.deleteNote} updateItem={this.updateNote}/>
+						<NotesList notes={this.props.notes} deleteNote={this.deleteNote} updateNote={this.updateNote}/>
 					</Col>
 				</Row>
 			</Container>
