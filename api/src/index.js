@@ -11,15 +11,15 @@ const router = routing(router_middleware());
 const app = new Koa();
 
 //parse requests
-app.use(parser())
+app.use(parser());
 //log context of each request
 app.use(async (ctx,next) => {
 	console.log(ctx);
 	return await next();
 });
 //assign routes
-app.use(router.routes())
-app.use(router.allowedMethods())
+app.use(router.routes());
+app.use(router.allowedMethods());
 
 // uses async functions
 app.use(async (ctx) => {
