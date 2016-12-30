@@ -10,4 +10,11 @@ export default (mongoose) => {
   db.on('open',() => {
     console.log('successful connection')
   });
+
+  let Schema = mongoose.Schema;
+  let Notes = new Schema({
+
+  });
+
+  let NoteModel = mongoose.model('Notes',Notes)
 }
