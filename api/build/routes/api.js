@@ -17,9 +17,8 @@ exports.default = function (router) {
 					switch (_context.prev = _context.next) {
 						case 0:
 							ctx.body = 'api path /';
-							console.log('path /');
 
-						case 2:
+						case 1:
 						case 'end':
 							return _context.stop();
 					}
@@ -30,7 +29,19 @@ exports.default = function (router) {
 		return function (_x, _x2) {
 			return _ref.apply(this, arguments);
 		};
-	}());
+	}()), router.get('/notes/all', function (ctx, next) {
+		ctx.body = 'api all notes';
+		console.log('api all notes');
+	}), router.post('/notes/add', function (ctx, next) {
+		ctx.body = 'api add note';
+		console.log('api add note');
+	}), router.put('/notes/update/:id', function (ctx, next) {
+		ctx.body = 'api update note' + ctx.params.id;
+		console.log('api update note');
+	}), router.delete('/notes/delete/:id', function (ctx, next) {
+		ctx.body = 'api delete' + ctx.params.id;
+		console.log('api delete note');
+	});
 
 	return router;
 };

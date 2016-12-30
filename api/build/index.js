@@ -6,6 +6,10 @@ var _koa = require('koa');
 
 var _koa2 = _interopRequireDefault(_koa);
 
+var _mongoose = require('mongoose');
+
+var _mongoose2 = _interopRequireDefault(_mongoose);
+
 var _koaRouter = require('koa-router');
 
 var _koaRouter2 = _interopRequireDefault(_koaRouter);
@@ -14,27 +18,36 @@ var _koaBodyparser = require('koa-bodyparser');
 
 var _koaBodyparser2 = _interopRequireDefault(_koaBodyparser);
 
-var _api = require('./routes/api');
-
-var _api2 = _interopRequireDefault(_api);
-
 var _kcors = require('kcors');
 
 var _kcors2 = _interopRequireDefault(_kcors);
 
+var _api = require('./routes/api');
+
+var _api2 = _interopRequireDefault(_api);
+
+var _mongoose3 = require('./config/mongoose');
+
+var _mongoose4 = _interopRequireDefault(_mongoose3);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
+//mongoose for mongodb
+
 // Middleware for routing
 
 // Middleware for accessingjson fron ctx.body
 
+//cors
+
 // file with my routes
 
-//cors
+//db config
 
 
 var port = process.env.PORT || 8000;
+var db = (0, _mongoose4.default)(_mongoose2.default);
 var router = (0, _api2.default)((0, _koaRouter2.default)());
 var app = new _koa2.default();
 
