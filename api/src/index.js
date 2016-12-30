@@ -5,11 +5,15 @@ import router_middleware from 'koa-router';
 // Middleware for accessingjson fron ctx.body
 import parser from 'koa-bodyparser';
 // file with my routes
-import routing from './routes/router';
+import api from './routes/api';
+//cors
+import cors from 'kcors';
 
-const router = routing(router_middleware());
+const port = process.env.PORT || 8000;
+const router = api(router_middleware());
 const app = new Koa();
 
+app.use(cors());
 //parse requests
 app.use(parser());
 //log context of each request
@@ -26,6 +30,6 @@ app.use(async (ctx) => {
     ctx.body = 'Hello world';
 });
 
-app.listen(3000,() => {
-	console.log('listen on port 3000')
+app.listen(port,() => {
+	console.log('listen on port '+port);
 });

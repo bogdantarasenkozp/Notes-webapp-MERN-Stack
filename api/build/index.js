@@ -10,35 +10,35 @@ var _koaRouter = require('koa-router');
 
 var _koaRouter2 = _interopRequireDefault(_koaRouter);
 
-var _koaLogger = require('koa-logger');
-
-var _koaLogger2 = _interopRequireDefault(_koaLogger);
-
 var _koaBodyparser = require('koa-bodyparser');
 
 var _koaBodyparser2 = _interopRequireDefault(_koaBodyparser);
 
-var _router = require('./routes/router');
+var _api = require('./routes/api');
 
-var _router2 = _interopRequireDefault(_router);
+var _api2 = _interopRequireDefault(_api);
+
+var _kcors = require('kcors');
+
+var _kcors2 = _interopRequireDefault(_kcors);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
 // Middleware for routing
 
-// Middleware for logging pretty messages
-
 // Middleware for accessingjson fron ctx.body
 
 // file with my routes
 
+//cors
 
-var router = (0, _router2.default)((0, _koaRouter2.default)());
+
+var port = process.env.PORT || 8000;
+var router = (0, _api2.default)((0, _koaRouter2.default)());
 var app = new _koa2.default();
 
-//log
-app.use((0, _koaLogger2.default)());
+app.use((0, _kcors2.default)());
 //parse requests
 app.use((0, _koaBodyparser2.default)());
 //log context of each request
@@ -93,7 +93,7 @@ app.use(function () {
 	};
 }());
 
-app.listen(3000, function () {
-	console.log('listen on port 3000');
+app.listen(port, function () {
+	console.log('listen on port ' + port);
 });
 //# sourceMappingURL=index.js.map

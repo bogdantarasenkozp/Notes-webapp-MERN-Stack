@@ -34,4 +34,4 @@ exports.default = function (router) {
 
 	return router;
 };
-//# sourceMappingURL=router.js.map
+//# sourceMappingURL=api.js.map
