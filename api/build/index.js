@@ -48,6 +48,7 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
 
 var port = process.env.PORT || 8000;
 var db = (0, _mongoose4.default)(_mongoose2.default);
+
 var router = (0, _api2.default)((0, _koaRouter2.default)());
 var app = new _koa2.default();
 

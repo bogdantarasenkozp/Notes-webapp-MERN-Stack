@@ -11,10 +11,11 @@ import cors from 'kcors';
 // file with my routes
 import api from './routes/api';
 //db config
-import config_db from './config/mongoose'
+import connect from './config/mongoose'
 
 const port = process.env.PORT || 8000;
-const db = config_db(mongoose);
+const db = connect(mongoose);
+
 const router = api(router_middleware());
 const app = new Koa();
 
