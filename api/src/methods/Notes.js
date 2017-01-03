@@ -7,6 +7,7 @@ function addNote (data) {
       if (err) throw err;
     }
   );
+
 }
 
 function getAllNotes () {
@@ -36,10 +37,9 @@ function updateNote (id,data) {
 
 function deleteNote (id) {
   console.log('call deleteNote')
-  NoteModel.findOneAndRemove(
-    {id:id},(err,note) => {
+  NoteModel.findByIdAndRemove(
+    id,(err,note) => {
       if (err) throw err;
-      console.log('removed')
     }
   )
 }

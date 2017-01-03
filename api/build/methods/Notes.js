@@ -40,9 +40,8 @@ function updateNote(id, data) {
 
 function deleteNote(id) {
   console.log('call deleteNote');
-  _Notes2.default.findOneAndRemove({ id: id }, function (err, note) {
+  _Notes2.default.findByIdAndRemove(id, function (err, note) {
     if (err) throw err;
-    console.log('removed');
   });
 }
 
