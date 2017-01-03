@@ -32,6 +32,7 @@ class NoteComponent extends Component{
     const {note,updateNote } = this.props;
 
     const notedata = {
+      _id:note._id,
       id:note.id,
       text:note_input
     }
@@ -75,7 +76,7 @@ class NoteComponent extends Component{
   	return (
       <Row className="small-top-offset">
         <Col xs="3">{note.text}</Col>
-        <Col xs="2"><Button outline color="danger" onClick={deleteNote.bind(null,note.id)}>delete</Button></Col>
+        <Col xs="2"><Button outline color="danger" onClick={deleteNote.bind(null,note._id)}>delete</Button></Col>
         <Col xs="2"><Button outline color="warning" onClick={this.toggleChangeInput}>{changeInputStatus}</Button></Col>
         <Col xs="4">{changeInput}</Col>
       </Row>

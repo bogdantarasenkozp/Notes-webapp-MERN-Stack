@@ -6,12 +6,16 @@ const _ = require('lodash');
 import NotesList from '../components/Notes/NotesList';
 import InputComponent from '../components/Input/InputComponent';
 
-import { addNote,removeNote,updateNote } from '../actions/note';
+import { addNote,removeNote,updateNote,loadContent } from '../actions/note';
 
 import store from '../store/index';
 
 class NoteListContainer extends Component{
-	
+
+	componentWillMount () {
+		store.dispatch(loadContent());
+	}
+
 	addNote (note) {
 		let notes = store.getState();
 		let lastIndex = null;
@@ -27,16 +31,16 @@ class NoteListContainer extends Component{
 	deleteNote (id) {
 		let notes = store.getState().noteState.notes;
 		_.remove(notes, function(note) {
-		  return note.id === id;
+		 return note._id === id;
 		});
-		store.dispatch(removeNote(notes));
+		store.dispatch(removeNote(id,notes));
 	}
 
 	updateNote (note) {
 		let notes = store.getState().noteState.notes;
-		let noteIndex = _.findIndex(notes,{id:note.id});
+		let noteIndex = _.findIndex(notes,{_id:note._id});
 		notes[noteIndex].text = note.text;
-		store.dispatch(updateNote(notes))
+		store.dispatch(updateNote(note.id,note))
 	}
 
 	render () {
@@ -47,7 +51,7 @@ class NoteListContainer extends Component{
 						<InputComponent addNote={this.addNote} />
 					</Col>
 				</Row>
-				
+
 				<Row>
 					<Col xs="12">
 						<NotesList notes={this.props.notes} deleteNote={this.deleteNote} updateNote={this.updateNote}/>

@@ -9,10 +9,10 @@ class HomeComponent extends Component{
 		      	<Container>
 		      		<Row>
 			        	<Col xs="12">
-			        		<h1 className="display-3">Hi, this is my first React app!</h1>
+			        		<h1 className="display-3">Hi, this is my notes app!</h1>
 			        	</Col>
 			        	<Col xs="12">
-			        		<p className="lead">I use here such libraries:React,Redux,React Router,ReactStrap(Bootstrap 4),Create React App (CLI)</p>
+			        		<p className="lead">I use here such libraries:Koa 2,MongoDB,React,Redux,React Router,ReactStrap(Bootstrap 4),Create React App (CLI)</p>
 			        	</Col>
 			        </Row>
 			        <Row>
