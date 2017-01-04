@@ -1,36 +1,14 @@
 import axios from 'axios';
 
-function addNoteSuccess (data) {
-	return {
-		type:'ADD_NOTE_SUCCESS',
-		payload:data
-	}
-}
-
-function addNoteError () {
-	return {
-		type:'ADD_NOTE_ERROR'
-	}
-}
-
-function addNoteRequest () {
-	return {
-		type:'ADD_NOTE_REQUEST'
-	}
-}
-
-function addNote (data) {
+function loadContent () {
 	return (dispatch) => {
-		dispatch(addNoteRequest())
-		axios.post('http://localhost:8000/api/notes/add',data)
+		dispatch(getNotesRequest())
+		axios.get('http://localhost:8000/api/notes/all')
 		.then(function(response){
-			dispatch(addNoteSuccess(data))
-			//dispatch(loadContent ())
-			console.log('ok')
+			dispatch(getNotesSuccess(response.data))
 		})
 		.then(function(err){
-			dispatch(addNoteError())
-			console.log('not ok')
+			dispatch(getNotesError())
 		})
 	}
 }
@@ -70,13 +48,46 @@ function removeNote (id,data) {
 	}
 }
 
-function updateNote (id,data) {
+function addNoteSuccess (data) {
+	return {
+		type:'ADD_NOTE_SUCCESS',
+		payload:data
+	}
+}
+
+function addNoteError () {
+	return {
+		type:'ADD_NOTE_ERROR'
+	}
+}
+
+function addNoteRequest () {
+	return {
+		type:'ADD_NOTE_REQUEST'
+	}
+}
+
+function addNote (data) {
+	return (dispatch) => {
+		dispatch(addNoteRequest())
+		axios.post('http://localhost:8000/api/notes/add',data)
+		.then(function(response){
+			dispatch(addNoteSuccess(response.data))
+			console.log('ok')
+		})
+		.then(function(err){
+			dispatch(addNoteError())
+			console.log('not ok')
+		})
+	}
+}
+
+function updateNote (id,data,note) {
 	return (dispatch) => {
 		dispatch(updateNoteRequest())
 		axios.put('http://localhost:8000/api/notes/update/'+id,data)
 		.then(function(response){
-			dispatch(updateNoteSuccess(data))
-			//dispatch(loadContent ())
+			dispatch(updateNoteSuccess(note))
 			console.log('ok')
 		})
 		.then(function(err){
@@ -121,20 +132,6 @@ function getNotesSuccess (data) {
 function getNotesError () {
 	return {
 		type:'GET_NOTES_ERROR'
-	}
-}
-
-function loadContent () {
-	return (dispatch) => {
-		dispatch(getNotesRequest())
-		axios.get('http://localhost:8000/api/notes/all')
-		.then(function(response){
-			dispatch(getNotesSuccess(response.data))
-			console.log(response.data)
-		})
-		.then(function(err){
-			dispatch(getNotesError())
-		})
 	}
 }
 

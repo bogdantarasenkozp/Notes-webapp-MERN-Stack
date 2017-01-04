@@ -60,7 +60,7 @@ class NoteComponent extends Component{
       changeInput = (
         <div>
         	<Col xs="10">
-  	      	<Input type='text' ref='changeNote'/>
+  	      	<Input type='text' ref='changeNote' />
           </Col>
           <Col xs="2">
   	      	<Button outline color="primary" onClick={this.changeInputClick.bind(this)}>change</Button>

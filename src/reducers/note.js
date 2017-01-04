@@ -16,6 +16,7 @@ const noteReducer = function(state = initialNoteState,action){
 			return {notes:_.intersection(state.notes,action.payload)};
 		case 'UPDATE_NOTE_SUCCESS':
 			return {...state,...{ notes:action.payload }};
+			console.log(action.payload)
 	}
 	return state;
 }

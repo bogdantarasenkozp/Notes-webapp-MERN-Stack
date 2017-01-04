@@ -5,7 +5,6 @@ class NotesList extends Component{
 
   render () {
     let _this = this;
-    console.log(this.props.notes)
     return (
       <div>
         {

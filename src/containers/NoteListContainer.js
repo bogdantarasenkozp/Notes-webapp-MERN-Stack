@@ -40,7 +40,7 @@ class NoteListContainer extends Component{
 		let notes = store.getState().noteState.notes;
 		let noteIndex = _.findIndex(notes,{_id:note._id});
 		notes[noteIndex].text = note.text;
-		store.dispatch(updateNote(note.id,note))
+		store.dispatch(updateNote(note._id,note,notes))
 	}
 
 	render () {
