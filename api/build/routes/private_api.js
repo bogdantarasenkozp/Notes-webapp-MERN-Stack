@@ -145,8 +145,10 @@ exports.default = function (router) {
 		return function (_x9, _x10) {
 			return _ref5.apply(this, arguments);
 		};
-	}());
+	}()), router.get("/me", function (ctx) {
+		ctx.body = ctx.state.user;
+	});
 
 	return router;
 };
-//# sourceMappingURL=api.js.map
+//# sourceMappingURL=private_api.js.map

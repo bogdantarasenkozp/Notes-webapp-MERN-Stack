@@ -12,13 +12,13 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 function addNote(data) {
   var Note = new _Notes2.default(data);
-  Note.save(function (err) {
+  Note.save(function (err, note) {
     if (err) throw err;
   });
+  return Note;
 }
 
 function getAllNotes() {
-  console.log('call getAllNotes');
   return _Notes2.default.find({}, function (err, users) {
     if (err) throw err;
     return users;
@@ -26,20 +26,20 @@ function getAllNotes() {
 }
 
 function updateNote(id, data) {
-  console.log('call updateNote');
-  _Notes2.default.findOneAndUpdate({ id: id }, { text: data.text }, function (err, note) {
+  _Notes2.default.findOneAndUpdate({ _id: id }, { text: data.text }, function (err, note) {
     if (err) throw err;
-    console.log(note);
     note.text = data.text;
-    note.save(function (err) {
+    note.save(function (err, note) {
       if (err) throw err;
-      console.log('successful updated');
     });
+  });
+  return _Notes2.default.findById(id, function (err, note) {
+    if (err) throw err;
+    return note;
   });
 }
 
 function deleteNote(id) {
-  console.log('call deleteNote');
   _Notes2.default.findByIdAndRemove(id, function (err, note) {
     if (err) throw err;
   });

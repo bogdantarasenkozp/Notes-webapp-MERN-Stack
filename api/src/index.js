@@ -1,40 +1,44 @@
 import 'babel-polyfill';
 import Koa from 'koa';
-//mongoose for mongodb
 import mongoose from 'mongoose';
-// Middleware for routing
 import router_middleware from 'koa-router';
-// Middleware for accessingjson fron ctx.body
 import parser from 'koa-bodyparser';
-//cors
 import cors from 'kcors';
-// file with my routes
-import api from './routes/api';
-//db config
+import jwt from "koa-jwt";
+
+import private_api from './routes/private_api';
+import public_api from './routes/public_api';
 import connect from './config/mongoose'
+import passport, { localAuthHandler } from "./auth/passport";
 
 const port = process.env.PORT || 8000;
 const db = connect(mongoose);
+const protected_routes = private_api(router_middleware());
+const public_routes = public_api(router_middleware());
 
-const router = api(router_middleware());
 const app = new Koa();
 
 app.use(cors());
-//parse requests
-app.use(parser());
-//log context of each request
-app.use(async (ctx,next) => {
-	console.log(ctx);
-	return await next();
-});
-//assign routes
-app.use(router.routes());
-app.use(router.allowedMethods());
 
-// uses async functions
-app.use(async (ctx) => {
-    ctx.body = 'Hello world';
-});
+app.use(parser());
+
+// app.use(async (ctx,next) => {
+// 	console.log(ctx);
+// 	return await next();
+// });
+
+app.use(public_routes.routes());
+app.use(public_routes.allowedMethods());
+
+app.use(passport.initialize());
+app.use(jwt({ secret: "secret", debug: true }))
+
+app.use(protected_routes.routes());
+app.use(protected_routes.allowedMethods());
+
+// app.use(async (ctx) => {
+//     ctx.body = 'Hello world';
+// });
 
 app.listen(port,() => {
 	console.log('listen on port '+port);

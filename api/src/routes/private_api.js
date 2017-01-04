@@ -29,6 +29,10 @@ export default (router) => {
 		router.delete('/notes/delete/:id',async (ctx,next) => {
 			ctx.body = await NoteModel.deleteNote (ctx.params.id);
 			console.log('api delete note')
+		}),
+
+		router.get("/me", (ctx) => {
+			ctx.body = ctx.state.user;
 		})
 
 	return router;
