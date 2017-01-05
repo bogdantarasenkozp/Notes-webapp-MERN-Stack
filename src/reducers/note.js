@@ -6,6 +6,8 @@ const initialNoteState = {
 
 const noteReducer = function(state = initialNoteState,action){
 	switch(action.type){
+		case 'REMOVE_ALL_NOTES':
+			return {notes:[]};
 		case 'GET_NOTES_SUCCESS':
 			return {notes:[...state.notes,...action.payload]};
 		case 'NOTE_LIST_SUCCESS':

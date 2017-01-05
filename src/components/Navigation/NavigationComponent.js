@@ -1,8 +1,20 @@
 import React, {Component} from 'react';
 import { Navbar, Nav, NavItem, NavLink } from 'reactstrap';
+import axios from 'axios';
 import { Link } from 'react-router';
+import store from '../../store/index';
+import { clearContent } from '../../actions/note';
 
 class Navigation extends Component{
+
+  logout () {
+    localStorage.removeItem('accessToken');
+    localStorage.removeItem('refreshToken');
+    axios.defaults.headers.common['Authorization'] = '';
+    store.dispatch(clearContent());
+    console.log(store.getState())
+  }
+
   render() {
     return (
       <div>
@@ -28,6 +40,11 @@ class Navigation extends Component{
                 <Link to="/auth">Auth</Link>
               </NavLink>
             </NavItem>
+            <NavItem>
+              <NavLink onClick={this.logout}>
+                <Link to="/">Logout</Link>
+              </NavLink>
+            </NavItem>
           </Nav>
         </Navbar>
       </div>
@@ -36,4 +53,3 @@ class Navigation extends Component{
 }
 
 export default Navigation;
-

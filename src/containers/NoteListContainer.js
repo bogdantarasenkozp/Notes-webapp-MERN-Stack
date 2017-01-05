@@ -5,15 +5,14 @@ const _ = require('lodash');
 
 import NotesList from '../components/Notes/NotesList';
 import InputComponent from '../components/Input/InputComponent';
-
 import { addNote,removeNote,updateNote,loadContent } from '../actions/note';
-
 import store from '../store/index';
 
 class NoteListContainer extends Component{
 
 	componentWillMount () {
-		store.dispatch(loadContent());
+		if(store.getState().noteState.notes.length === 0)
+			store.dispatch(loadContent());
 	}
 
 	addNote (note) {

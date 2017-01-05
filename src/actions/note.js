@@ -1,4 +1,14 @@
 import axios from 'axios';
+const accessToken = localStorage.getItem('accessToken');
+
+if (accessToken)
+	axios.defaults.headers.common['Authorization'] = 'Bearer '+accessToken;
+
+function clearContent () {
+	return {
+		type:'REMOVE_ALL_NOTES'
+	}
+}
 
 function loadContent () {
 	return (dispatch) => {
@@ -135,4 +145,4 @@ function getNotesError () {
 	}
 }
 
-export { addNote,removeNote,updateNote,loadContent };
+export { addNote,removeNote,updateNote,loadContent,clearContent };

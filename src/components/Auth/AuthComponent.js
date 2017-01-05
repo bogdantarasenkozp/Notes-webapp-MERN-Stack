@@ -1,21 +1,19 @@
-import React,{Component} from 'react'
-
-import SignInComponent from '../components/Auth/SignInComponent';
-import SignUpComponent from '../components/Auth/SignUpComponent';
-
+import React,{ Component } from 'react'
 import { Button, Input, Col, Container, Row, Form, FormGroup, Label, FormText } from 'reactstrap';
+import SignInContainer from '../../containers/SignInContainer';
+import SignUpContainer from '../../containers/SignUpContainer';
 
-class AuthContainer extends Component{
+class AuthComponent extends Component{
 	render(){
 		return (
 			<div>
 				<Container>
 					<Row className="small-top-offset">
 						<Col xs="6">
-							<SignInComponent />
+							<SignInContainer />
 						</Col>
 						<Col xs="6">
-							<SignUpComponent />
+							<SignUpContainer />
 						</Col>
 					</Row>
 				</Container>
@@ -24,4 +22,4 @@ class AuthContainer extends Component{
 	}
 }
 
-export default AuthContainer;
+export default AuthComponent;
