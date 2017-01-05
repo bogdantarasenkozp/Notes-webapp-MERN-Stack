@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.localAuthHandler = undefined;
+exports.localAuth = undefined;
 
 var _koaPassport = require("koa-passport");
 
@@ -13,25 +13,42 @@ var _passportLocal = require("passport-local");
 
 var _token = require("./token");
 
+var _User = require("../models/User");
+
+var _User2 = _interopRequireDefault(_User);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
 
 _koaPassport2.default.use(new _passportLocal.Strategy(function (username, password, done) {
-  if (username === "test" && password === "test") {
-    console.log(1);
+
+  _User2.default.findOneOrCreate({ username: username }, { username: username, password: password }, function (err, user) {
+    if (err) done(null, false, { message: 'Incorrect username or password.' });
+    console.log(user);
     done(null, {
-      username: "test",
+      username: user.username,
       verified: "true"
     }, { message: 'Success' });
-  } else if (username !== "test" || password !== "test") {
-    done(null, false, { message: 'Incorrect username or password.' });
-  }
+  });
+
+  // Person.findOneOrCreate({name: 'Mohammad'}, {name: 'Mohammad', age: 20}, function(err, person) {
+  // // {name: 'Mohammad', age: 20}
+  // console.log(person);
+  // });
+
+  // if (username === "test" && password === "test") {
+  //   console.log(1);
+  //   done(null, {
+  //     username: "test",
+  //     verified: "true"
+  //   }, { message: 'Success' });
+  // } else if (username !== "test" || password !== "test") {
+  //   done(null, false, { message: 'Incorrect username or password.' });
+  // }
 }));
 
-var localAuthHandler = exports.localAuthHandler = function localAuthHandler(ctx, next) {
-  console.log(ctx.request.body);
-  console.log(ctx.request.body.login);
+var localAuth = exports.localAuth = function localAuth(ctx, next) {
   return _koaPassport2.default.authenticate('local', function () {
     var _ref = _asyncToGenerator(regeneratorRuntime.mark(function _callee(err, user, info) {
       var _ref2, accessToken, refreshToken;

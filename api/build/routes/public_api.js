@@ -33,7 +33,9 @@ exports.default = function (router) {
 		};
 	}());
 
-	router.post('/auth', _passport.localAuthHandler);
+	router.post('/auth/signin', _passport.localAuth);
+
+	router.post('/auth/signup', _passport.localAuth);
 
 	return router;
 };

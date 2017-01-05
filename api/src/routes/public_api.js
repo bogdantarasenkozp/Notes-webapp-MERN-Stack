@@ -1,4 +1,4 @@
-import { localAuthHandler } from '../auth/passport'
+import { localAuth } from '../auth/passport'
 
 export default (router) => {
 	const api = 'api';
@@ -8,7 +8,10 @@ export default (router) => {
 	  ctx.body = 'test route'
 	})
 
-	router.post('/auth',localAuthHandler)
+	router.post('/auth/signin',localAuth)
+
+	router.post('/auth/signup',localAuth)
+
 
 	return router;
 }
