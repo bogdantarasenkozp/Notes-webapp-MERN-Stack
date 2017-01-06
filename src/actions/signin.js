@@ -38,6 +38,7 @@ function getUser () {
     axios.get('http://localhost:8000/api/me')
     .then(function(response){
       dispatch(getUserSuccess(response.data));
+      localStorage.setItem('userId',response.data._id);
       browserHistory.push('/notes');
     })
     .then(function(err){
@@ -65,4 +66,4 @@ function signinError () {
   }
 }
 
-export { signin }
+export { signin,getUser }

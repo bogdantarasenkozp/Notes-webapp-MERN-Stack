@@ -1,5 +1,5 @@
 import React,{ Component } from 'react'
-import { Button, Input, Col, Container, Row, Form, FormGroup, Label, FormText } from 'reactstrap';
+import { Col, Container, Row, } from 'reactstrap';
 import SignInContainer from '../../containers/SignInContainer';
 import SignUpContainer from '../../containers/SignUpContainer';
 

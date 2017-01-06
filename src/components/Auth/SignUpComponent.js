@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
-import { Button, Input, Col, Container, Row, Form, FormGroup, Label, FormText } from 'reactstrap';
+import { Button, Input, Form, FormGroup, Label } from 'reactstrap';
 
 class SignUpComponent extends Component{
 
