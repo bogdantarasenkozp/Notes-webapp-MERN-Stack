@@ -15,6 +15,14 @@ class Navigation extends Component{
     console.log(store.getState())
   }
 
+  isAuth () {
+    const token = localStorage.getItem('accessToken');
+    if (!token)
+      return false;
+    else
+      return true;
+  }
+
   render() {
     return (
       <div>
@@ -25,26 +33,35 @@ class Navigation extends Component{
           		  <img src='./logo.svg' width="35" height="35" alt="reactlogo"/>
               </Link>
           	</NavItem>
+
             <NavItem>
               <NavLink>
               	<Link to="/">Home</Link>
               </NavLink>
             </NavItem>
-            <NavItem>
-              <NavLink>
-              	<Link to="/notes" activeClassName="active">Users</Link>
-              </NavLink>
-            </NavItem>
-            <NavItem>
-              <NavLink>
-                <Link to="/auth">Auth</Link>
-              </NavLink>
-            </NavItem>
-            <NavItem>
-              <NavLink onClick={this.logout}>
-                <Link to="/">Logout</Link>
-              </NavLink>
-            </NavItem>
+            {this.isAuth() ?
+            <div>
+              <NavItem className='small-left-offset'>
+                <NavLink>
+                	<Link to="/notes" activeClassName="active">Users</Link>
+                </NavLink>
+              </NavItem>
+
+              <NavItem>
+                <NavLink onClick={this.logout}>
+                  <Link to="/">Logout</Link>
+                </NavLink>
+              </NavItem>
+            </div>
+            :
+
+              <NavItem>
+                <NavLink>
+                  <Link to="/auth">Auth</Link>
+                </NavLink>
+              </NavItem>
+
+           }
           </Nav>
         </Navbar>
       </div>
