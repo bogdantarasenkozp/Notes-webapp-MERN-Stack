@@ -54,13 +54,11 @@ class Navigation extends Component{
               </NavItem>
             </div>
             :
-
               <NavItem>
                 <NavLink>
                   <Link to="/auth">Auth</Link>
                 </NavLink>
               </NavItem>
-
            }
           </Nav>
         </Navbar>

@@ -11,19 +11,15 @@ import store from '../store/index';
 class NoteListContainer extends Component{
 
 	componentWillMount () {
-		if(store.getState().noteState.notes.length === 0)
-			store.dispatch(loadContent());
+		let userId = this.props.user._id;
+		if(this.props.notes.length === 0 ){
+				store.dispatch(loadContent(userId));
+		}
 	}
 
 	addNote (note) {
-		let notes = store.getState();
-		let lastIndex = null;
-		if(notes.noteState.notes.length > 0){
-			lastIndex = _.last(notes.noteState.notes).id;
-		}else{
-			lastIndex = 1;
-		}
-		note.id = ++lastIndex;
+		console.log(store.getState().userState.user._id)
+		note.userid = store.getState().userState.user._id;
 		store.dispatch(addNote(note));
 	}
 
@@ -63,7 +59,8 @@ class NoteListContainer extends Component{
 
 const mapStateToProps = function(store){
 	return {
-		notes:store.noteState.notes
+		notes:store.noteState.notes,
+		user:store.userState.user
 	}
 }
 
