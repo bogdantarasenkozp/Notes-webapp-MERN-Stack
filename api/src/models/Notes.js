@@ -3,7 +3,7 @@ import mongoose from 'mongoose'
 let Schema = mongoose.Schema;
 
 let Notes = new Schema({
-  id:Number,
+  userid:String,
   text:String
 });
 

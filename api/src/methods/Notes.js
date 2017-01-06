@@ -8,12 +8,12 @@ function addNote (data) {
     }
   );
   return Note;
-
 }
 
-function getAllNotes () {
+function getAllNotes (id) {
   return NoteModel.find(
-    {},(err,users) => {
+     {userid:id},(err,users) => {
+    //{},(err,users) => {
       if (err) throw err;
       return users;
     }
@@ -48,4 +48,4 @@ function deleteNote (id) {
   )
 }
 
-export default {addNote,getAllNotes,updateNote,deleteNote};
+export default { addNote,getAllNotes,updateNote,deleteNote };

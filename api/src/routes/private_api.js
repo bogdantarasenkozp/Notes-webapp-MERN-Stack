@@ -1,4 +1,5 @@
-import NoteModel from '../methods/Notes'
+import NoteModel from '../methods/Notes';
+import UserModel from '../methods/User';
 
 export default (router) => {
 	const api = 'api';
@@ -8,14 +9,16 @@ export default (router) => {
 	    ctx.body = await NoteModel.getAllNotes ();
 	  }),
 
-		router.get('/notes/all',async (ctx,next) => {
-			let res = await NoteModel.getAllNotes ();
+		router.get('/notes/user/:id',async (ctx,next) => {
+			let user_id = ctx.params.id;
+			let res = await NoteModel.getAllNotes (user_id);
 			ctx.body = res;
 			console.log('api all notes')
 		}),
 
 		router.post('/notes/add',async (ctx,next) => {
 			let req_data = ctx.request.body;
+			//console.log(req_data)
 			ctx.body = await NoteModel.addNote (req_data);
 			console.log('api add note');
 		}),
@@ -31,8 +34,9 @@ export default (router) => {
 			console.log('api delete note')
 		}),
 
-		router.get("/me", (ctx) => {
-			ctx.body = ctx.state.user;
+		router.get("/me",async (ctx) => {
+			let username = ctx.state.user.user.username;
+			ctx.body = await UserModel.getAllUserData (username);
 		})
 
 	return router;

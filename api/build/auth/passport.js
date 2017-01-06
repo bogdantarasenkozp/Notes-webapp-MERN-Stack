@@ -31,12 +31,6 @@ _koaPassport2.default.use(new _passportLocal.Strategy(function (username, passwo
       verified: "true"
     }, { message: 'Success' });
   });
-
-  // Person.findOneOrCreate({name: 'Mohammad'}, {name: 'Mohammad', age: 20}, function(err, person) {
-  // // {name: 'Mohammad', age: 20}
-  // console.log(person);
-  // });
-
   // if (username === "test" && password === "test") {
   //   console.log(1);
   //   done(null, {

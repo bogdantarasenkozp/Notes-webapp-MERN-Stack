@@ -18,8 +18,9 @@ function addNote(data) {
   return Note;
 }
 
-function getAllNotes() {
-  return _Notes2.default.find({}, function (err, users) {
+function getAllNotes(id) {
+  return _Notes2.default.find({ userid: id }, function (err, users) {
+    //{},(err,users) => {
     if (err) throw err;
     return users;
   });
