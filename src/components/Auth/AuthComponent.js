@@ -1,7 +1,7 @@
 import React,{ Component } from 'react'
 import { Col, Container, Row, } from 'reactstrap';
 import SignInContainer from '../../containers/SignInContainer';
-import SignUpContainer from '../../containers/SignUpContainer';
+// import SignUpContainer from '../../containers/SignUpContainer';
 
 class AuthComponent extends Component{
 	render(){
@@ -12,9 +12,11 @@ class AuthComponent extends Component{
 						<Col xs="6">
 							<SignInContainer />
 						</Col>
-						<Col xs="6">
+						{/*
+							<Col xs="6">
 							<SignUpContainer />
 						</Col>
+						*/}
 					</Row>
 				</Container>
 			</div>

@@ -1,34 +1,31 @@
-import axios from 'axios';
+import { signupRequest } from '../api/index';
 
-function signup (data) {
+const signup = (data) => {
   return (dispatch)=>{
-    dispatch(signupRequest());
-    axios.post('http://localhost:8000/api/auth/signup',data)
-    .then(function(response){
-      console.log('sign up success')
-      console.log(response.data)
-      dispatch(signupSuccess())
-    })
-    .then(function(err){
-      console.log('sign up err')
-      dispatch(signupError())
-    })
+    dispatch(signupMakeRequest());
+    signupRequest(data)
+    .then(
+      (responseData) => {
+        console.log(responseData)
+        dispatch(signupSuccess())
+      }
+    )
   }
 }
 
-function signupRequest () {
+const signupMakeRequest = () => {
   return {
     type:'SIGN_UP_REQUEST'
   }
 }
 
-function signupSuccess () {
+const signupSuccess = () => {
   return {
     type:'SIGN_UP_SUCCESS'
   }
 }
 
-function signupError () {
+const signupError = () => {
   return {
     type:'SIGN_UP_ERROR'
   }

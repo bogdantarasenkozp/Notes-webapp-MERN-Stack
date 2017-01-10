@@ -6,7 +6,7 @@ const _ = require('lodash');
 import NotesList from '../components/Notes/NotesList';
 import InputComponent from '../components/Input/InputComponent';
 import { addNote,removeNote,updateNote,loadContent } from '../actions/note';
-import { getUser } from '../actions/signin';
+import { getUser } from '../actions/user';
 import store from '../store/index';
 
 class NoteListContainer extends Component{
@@ -21,8 +21,10 @@ class NoteListContainer extends Component{
 
 	componentWillMount () {
 		let userId = localStorage.getItem('userId');
-		console.log(userId);
-		if(this.props.notes.length === 0 )
+
+		if (this.props.user._id === undefined)
+			store.dispatch(getUser())
+		if (this.props.notes.length === 0 )
 			store.dispatch(loadContent(userId))
 	}
 
