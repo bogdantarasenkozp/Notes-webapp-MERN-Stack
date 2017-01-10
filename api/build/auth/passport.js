@@ -11,6 +11,10 @@ var _koaPassport2 = _interopRequireDefault(_koaPassport);
 
 var _passportLocal = require("passport-local");
 
+var _bcrypt = require("bcrypt");
+
+var _bcrypt2 = _interopRequireDefault(_bcrypt);
+
 var _token = require("./token");
 
 var _User = require("../models/User");
@@ -24,22 +28,15 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
 _koaPassport2.default.use(new _passportLocal.Strategy(function (username, password, done) {
 
   _User2.default.findOneOrCreate({ username: username }, { username: username, password: password }, function (err, user) {
-    if (err) done(null, false, { message: 'Incorrect username or password.' });
-    console.log(user);
-    done(null, {
-      username: user.username,
-      verified: "true"
-    }, { message: 'Success' });
+
+    if (err) done(null, false, { message: 'Authentication err.' });
+    if (user && password == user.password) {
+      done(null, {
+        username: user.username,
+        verified: "true"
+      }, { message: 'Success' });
+    }
   });
-  // if (username === "test" && password === "test") {
-  //   console.log(1);
-  //   done(null, {
-  //     username: "test",
-  //     verified: "true"
-  //   }, { message: 'Success' });
-  // } else if (username !== "test" || password !== "test") {
-  //   done(null, false, { message: 'Incorrect username or password.' });
-  // }
 }));
 
 var localAuth = exports.localAuth = function localAuth(ctx, next) {

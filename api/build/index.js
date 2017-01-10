@@ -52,13 +52,7 @@ var public_routes = (0, _public_api2.default)((0, _koaRouter2.default)());
 var app = new _koa2.default();
 
 app.use((0, _kcors2.default)());
-
 app.use((0, _koaBodyparser2.default)());
-
-// app.use(async (ctx,next) => {
-// 	console.log(ctx);
-// 	return await next();
-// });
 
 app.use(public_routes.routes());
 app.use(public_routes.allowedMethods());
@@ -68,10 +62,6 @@ app.use((0, _koaJwt2.default)({ secret: "secret", debug: true }));
 
 app.use(protected_routes.routes());
 app.use(protected_routes.allowedMethods());
-
-// app.use(async (ctx) => {
-//     ctx.body = 'Hello world';
-// });
 
 app.listen(port, function () {
 	console.log('listen on port ' + port);

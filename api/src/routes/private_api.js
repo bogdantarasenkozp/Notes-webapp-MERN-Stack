@@ -18,7 +18,6 @@ export default (router) => {
 
 		router.post('/notes/add',async (ctx,next) => {
 			let req_data = ctx.request.body;
-			//console.log(req_data)
 			ctx.body = await NoteModel.addNote (req_data);
 			console.log('api add note');
 		}),

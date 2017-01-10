@@ -19,13 +19,7 @@ const public_routes = public_api(router_middleware());
 const app = new Koa();
 
 app.use(cors());
-
 app.use(parser());
-
-// app.use(async (ctx,next) => {
-// 	console.log(ctx);
-// 	return await next();
-// });
 
 app.use(public_routes.routes());
 app.use(public_routes.allowedMethods());
@@ -35,10 +29,6 @@ app.use(jwt({ secret: "secret", debug: true }))
 
 app.use(protected_routes.routes());
 app.use(protected_routes.allowedMethods());
-
-// app.use(async (ctx) => {
-//     ctx.body = 'Hello world';
-// });
 
 app.listen(port,() => {
 	console.log('listen on port '+port);

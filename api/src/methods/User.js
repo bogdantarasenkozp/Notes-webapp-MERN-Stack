@@ -1,6 +1,6 @@
 import UserModel from '../models/User';
 
-function getAllUserData (username) {
+const getAllUserData = (username) => {
   return UserModel.findOne(
     {username:username},(err,user) => {
       if (err) throw err;

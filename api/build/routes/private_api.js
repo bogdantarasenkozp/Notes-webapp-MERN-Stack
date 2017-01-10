@@ -79,8 +79,6 @@ exports.default = function (router) {
 					switch (_context3.prev = _context3.next) {
 						case 0:
 							req_data = ctx.request.body;
-							//console.log(req_data)
-
 							_context3.next = 3;
 							return _Notes2.default.addNote(req_data);
 

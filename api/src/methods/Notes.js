@@ -1,6 +1,6 @@
 import NoteModel from '../models/Notes'
 
-function addNote (data) {
+const addNote = (data) => {
   let Note = new NoteModel(data);
   Note.save(
     (err,note) => {
@@ -10,17 +10,16 @@ function addNote (data) {
   return Note;
 }
 
-function getAllNotes (id) {
+const getAllNotes = (id) => {
   return NoteModel.find(
      {userid:id},(err,users) => {
-    //{},(err,users) => {
       if (err) throw err;
       return users;
     }
   )
 }
 
-function updateNote (id,data) {
+const updateNote = (id,data) => {
   NoteModel.findOneAndUpdate(
     {_id:id},{text:data.text},(err,note) => {
       if (err) throw err;
@@ -40,7 +39,7 @@ function updateNote (id,data) {
   )
 }
 
-function deleteNote (id) {
+const deleteNote = (id) => {
   NoteModel.findByIdAndRemove(
     id,(err,note) => {
       if (err) throw err;
