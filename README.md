@@ -3,3 +3,4 @@
 <p>npm run build</p>
 <p>redis server</p>
 <p>npm start</p>
+.
