@@ -1,9 +1,9 @@
 <h3>backend - in brunch server</h3>
 <h3>frontend - in brunch client</h3>
 <h2>Technologies</h2>
-<p>backend:</p>
-<p>Node.js,Koa 2,MongoDB,Passport.js,Redis</p>
-<p>frontend:</p>
+<h3>backend:</h3>
+<p>Node.js,Koa 2,MongoDB,Passport.js,Redis, REST API</p>
+<h3>frontend:</h3>
 <p>React,Redux,React Router,Redux-thunk,ReactStrap</p>
 <h2>Description</h2>
 <p>The project is notes app.It allow user add,delete and update notes.</p>
