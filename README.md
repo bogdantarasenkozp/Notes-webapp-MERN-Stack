@@ -1,5 +1,5 @@
-<h3>backend is situated in brunch - server</h3>
-<h3>frontend is situated in brunch - client</h3>
+<h3>backend - in brunch server</h3>
+<h3>frontend - in brunch client</h3>
 <h2>Technologies</h2>
 <p>backend:</p>
 <p>Node.js,Koa 2,MongoDB,Passport.js,Redis</p>
